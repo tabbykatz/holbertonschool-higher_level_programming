@@ -1,2 +1,2 @@
 #!/usr/bin/python3
-int check_cycle(listint_t *list);
+print("\"Programming is like building a multilingual puzzle")
