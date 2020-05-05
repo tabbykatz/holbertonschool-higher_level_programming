@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 def print_matrix_integer(matrix=[[]]):
-    dom = matrix
-    if not dom:
+    if not matrix:
         return None
-    for sub in dom:
-        if len(sub) == 0:
+    for inside in matrix:
+        if len(inside) == 0:
             print()
-        for i in range(len(sub)):
-            print("{:d}".format(sub[i]) end="\n",
-                  if i is len(sub) - 1 else " ")
+        for i in range(len(inside)):
+            print("{:d}".format(inside[i]),
+                  end="\n" if i is len(inside) - 1 else " ")
