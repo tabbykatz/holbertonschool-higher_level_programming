@@ -28,7 +28,7 @@ int is_palindrome(listint_t **head)
 {
 	listint_t *tortoise = *head, *hare = *head, *one, *two;
 
-	if (!(head && *head))
+	if (!(head && *head) || (*head)->next == NULL)
 		return (1);
 	while (hare != NULL && hare->next != NULL)
 	{
