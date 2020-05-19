@@ -12,7 +12,7 @@ class Square:
             size: length of a side of Square
             position: where the square is (coordinates)
         """
-        self.__size = size
+        self.size = size
         self.position = position
 
     def __str__(self):
@@ -56,8 +56,12 @@ class Square:
         """
         if not isinstance(value, tuple):
             raise TypeError('position must be a tuple of 2 positive integers')
-        if not len(value):
+        if len(value) != 2:
             raise TypeError('position must be a tuple of 2 positive integers')
+        for x in value:
+            if x < 0:
+                raise TypeError('position must be a tuple of 2 positive
+                                integers')
         self.__position = value
 
     def area(self):
