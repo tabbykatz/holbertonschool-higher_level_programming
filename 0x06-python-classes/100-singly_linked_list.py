@@ -1,32 +1,23 @@
 #!/usr/bin/python3
 """this is a module docstring?"""
 
+
 class Node:
-    """Define a node
-    Args:
-        data: what to put in the node
-        next_node: which node is next
-    """
+    """define a node"""
+
     def __init__(self, data, next_node=None):
+        """this is the init"""
         self.data = data
         self.next_node = next_node
 
     @property
     def data(self):
-        """get data for this node
-        Returns:
-            self.__data
-        """
+        """gets data"""
         return self.__data
 
     @data.setter
     def data(self, value):
-        """validate and set data for node
-        Args:
-            value: the int t put in the node as data
-        Raises:
-            TypeError: if value != int
-        """
+        """sets data"""
         if not isinstance(value, int):
             raise TypeError('data must be an integer')
         self.__data = value
@@ -41,12 +32,7 @@ class Node:
 
     @next_node.setter
     def next_node(self, value):
-        """set the next node for this node
-        Args:
-            value: the next node
-        Raises:
-            TypeError: if it's not a node object
-        """
+        """sets node"""
         if value is not None and type(value) != Node:
             raise TypeError('next_node must be a Node object')
         self.__next_node = value
@@ -54,7 +40,9 @@ class Node:
 
 class SinglyLinkedList:
     """define a sll"""
+
     def __init__(self):
+        """this is init"""
         self.head = None
 
     def __str__(self):
