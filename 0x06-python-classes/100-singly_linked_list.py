@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+
+
 class Node:
     """Define a node
     Args:
