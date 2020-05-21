@@ -1,0 +1,97 @@
+the ``2-matrix_divided`` module
+===============================
+
+using ``2-matrix_divided``
+--------------------------
+
+First import ``matrix_divided``:
+
+	>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+Test: normal matrix given by Holberton:
+
+	>>> matrix_divided([[2, 4, 6], [2, 2, 2]], 2)
+	[[1.0, 2.0, 3.0], [1.0, 1.0, 1.0]]
+
+Test: single element inner list:
+
+	>>> matrix_divided([[2]], 2)
+	[[1.0]]
+
+Test: negative division:
+
+	>>> matrix_divided([[2, 4, 6], [6, 4, 2]], -2)
+	[[-1.0, -2.0, -3.0], [-3.0, -2.0, -1.0]]
+
+Test: division by zero:
+
+	>>> matrix_divided([[2, 4, 6], [6, 4, 2]], 0)
+	Traceback (most recent call last):
+		...
+	ZeroDivisionError: division by zero
+
+Test: no first arg given:
+
+	>>> matrix_divided(None, 1)
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test: non numbers in matrix:
+
+	>>> matrix_divided([[2, 4, 6], ["hi", 4, 6]], 2)
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test: empty matrix:
+
+	>>> matrix_divided([[]], 2)
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test: inner lists of differing length:
+
+	>>> matrix_divided([[2, 4, 6], [2, 4]], 2)
+	Traceback (most recent call last):
+	...
+	TypeError: Each row of the matrix must have the same size
+
+Test: string instead of matrix:
+
+	>>> matrix_divided("whassup", 2)
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test: divide by string:
+
+	>>> matrix_divided([[2, 4, 6], [6, 4, 2]], "hello")
+	Traceback (most recent call last):
+	...
+	TypeError: div must be a number
+
+Test: no arg call:
+
+	>>> matrix_divided()
+	Traceback (most recent call last):
+	...
+	TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+Test: division by infinity:
+
+	>>> matrix_divided([[2, 4, 6], [6, 4, 2]], float('inf'))
+	[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
+Test: another kind of empty list:
+
+	>>> matrix_divided([[], [], []], 2)
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test: for two decimal place round:
+
+	>>> matrix_divided([[2.50]], 2)
+	[[1.25]]
