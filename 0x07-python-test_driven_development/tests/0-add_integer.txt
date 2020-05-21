@@ -1,0 +1,94 @@
+the ``0-add_integer``module
+===========================
+
+using ``add_integer``
+---------------------
+
+First import ``add_integer``: 
+
+	>>> add_integer = __import__('0-add_integer').add_integer
+
+Test: two small ints:
+
+	>>> add_integer(1, 2)
+	3
+
+Test: positive (a) and negative (b):
+
+	>>> add_integer(100, -2)
+	98
+
+Test: one int given as arg (a = 2, b = default (98)):
+
+	>>> add_integer(2)
+	100
+
+Test: float and negative:
+
+	>>> add_integer(100.3, -2)
+	98
+
+Test: second arg invalid:
+
+	>>> add_integer(4, "School")
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
+
+Test: no args given:
+
+	>>> add_integer(None)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+Test: single float arg:
+
+	>>> add_integer(2.345)
+	100
+
+Test: single negative float arg:
+
+	>>> add_integer(-98.888)
+	0
+
+Test: 2 big ints:
+
+	>>> add_integer(999999998, 999999998)
+	1999999996
+
+Test: two floats:
+
+	>>> add_integer(0.4, 0.4)
+	0
+
+Test: add infinity:
+
+	>>> add_integer(float('inf'), float('-inf'))
+	Traceback (most recent call last):
+		...
+	OverflowError: cannot convert float infinity to integer
+
+Test: invalid first arg:
+
+	>>> add_integer("Holberton", 0)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+Test: two words instead of ints:
+
+	>>> add_integer("hi", "bye")
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+Test: negative a and positive b, big:
+
+	>>> add_integer(-12345678, 12345678)
+	0
+
+Test: positive a and negative b, big:
+
+	>>> add_integer(12345678, -12345678)
+	0
