@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """matrix_divided module"""
 
+
 def matrix_divided(matrix, div):
     """divides matrix elements by div
     Args:
@@ -18,7 +19,7 @@ def matrix_divided(matrix, div):
         raise TypeError('div must be a number')
     if not isinstance(matrix, list) or len(matrix) == 0:
         raise TypeError('matrix must be a matrix (list of lists)' +
-                            ' of integers/floats')
+                        ' of integers/floats')
     for inner in matrix:
         if not isinstance(inner, list) or len(inner) == 0:
             raise TypeError('matrix must be a matrix (list of lists)' +
@@ -28,9 +29,9 @@ def matrix_divided(matrix, div):
         for item in inner:
             if not isinstance(item, (int, float)):
                 raise TypeError('matrix must be a matrix (list of lists)' +
-                                   ' of integers/floats')
+                                ' of integers/floats')
     return[[round(item / div, 2) for item in inner] for inner in matrix]
 
-if __name__=="__main__":
+if __name__ == "__main__":
     import doctest
     doctest.testfile("tests/2-matrix_divided.txt")

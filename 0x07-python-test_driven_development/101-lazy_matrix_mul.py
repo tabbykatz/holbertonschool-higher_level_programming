@@ -26,11 +26,10 @@ def lazy_matrix_mul(m_a, m_b):
     a_number = True
     b_number = True
     a_contains = True
-    b_contains= True
+    b_contains = True
     a_inner_contains = True
     b_inner_contains = True
     mul = True
-
 
     if not isinstance(m_a, list):
         a_list = False
@@ -60,7 +59,7 @@ def lazy_matrix_mul(m_a, m_b):
         if len(inner) != len(m_b[0]):
             b_same = False
         for item in inner:
-            if not isinstance(item, int) and not isinstance (item, float):
+            if not isinstance(item, int) and not isinstance(item, float):
                 b_number = False
 
     if not a_list:
@@ -92,9 +91,8 @@ def lazy_matrix_mul(m_a, m_b):
     if not mul:
         raise ValueError('m_a and m_b can\'t be multiplied')
 
-
     return numpy.matrix(m_a) * numpy.matrix(m_b)
 
 if __name__ == "__main__":
     import doctest
-    doctest.testfile("tests/101-lazy_matrix_mul.txt") 
+    doctest.testfile("tests/101-lazy_matrix_mul.txt")
