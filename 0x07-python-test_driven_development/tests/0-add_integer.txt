@@ -92,3 +92,10 @@ Test: positive a and negative b, big:
 
 	>>> add_integer(12345678, -12345678)
 	0
+
+Test: not a num:
+
+	>>> add_integer(float('nan'), 2)
+	Traceback (most recent call last):
+	...
+	ValueError: cannot convert float NaN to integer
