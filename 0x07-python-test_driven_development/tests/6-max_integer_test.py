@@ -21,7 +21,7 @@ class TestMaxInteger(unittest.TestCase):
         """this is another unit test for max_integer([..])"""
         self.assertEqual(max_integer([6, 5, 4, 3, 2, 1]), 6)
 
-    def end_max(self):
+    def test_end_max(self):
         """this is another unit test for max_integer([..])"""
         self.assertEqual(max_integer([1, 2, 3, 4, 5]), 5)
 
@@ -49,40 +49,41 @@ class TestMaxInteger(unittest.TestCase):
         """this is another unit test for max_integer([..])"""
         self.assertEqual(max_integer("123456789"), "9")
 
-    def strings_list(self):
+    def test_strings_list(self):
         """this is another unit test for max_integer([..])"""
-        self.assertEqual(max_integer(["aye", "bye", "cry", "die"]), ["die"])
+        self.assertEqual(max_integer(["aye", "bye", "cry", "die"]), "die")
 
-    def empty_string(self):
+    def test_empty_string(self):
         """this is another unit test for max_integer([..])"""
         self.assertEqual(max_integer(""), None)
 
-    def infinity_test(self):
+    def test_infinity(self):
         """this is another unit test for max_integer([..])"""
         self.assertEqual(max_integer([42, float('inf'), float('-inf')]),
                          float('inf'))
 
-    def type_mixed_pickles(self):
+    def test_mixed_pickles(self):
         """this is another unit test for max_integer([..])"""
-        self.assertEqual(max_integer(["baby", "got", 500, "back"]), 500)
+        with self.assertRaises(TypeError):
+            max_integer(["baby", "got", 500, "back"], 500)
 
-    def nan_test(self):
+    def test_nan(self):
         """this is another unit test for max_integer([..])"""
-        self.assertEqual(max_integer([float('nan'), 98, 99, 100]), 100 )
+        self.assertEqual(max_integer([97, float('nan'), 98, 99, 100]), 100)
 
-    def just_a_num(self):
+    def test_just_a_num(self):
         """this is another unit test for max_integer([..])"""
         with self.assertRaises(TypeError):
             max_integer(42)
 
-    def just_a_float(self):
+    def test_just_a_float(self):
         """this is another unit test for max_integer([..])"""
-        with selfassertRaises(TypeError):
+        with self.assertRaises(TypeError):
             max_integer(4.2)
 
-    def send_a_dict(self):
+    def test_send_a_dict(self):
         """this is another unit test for max_integer([..])"""
-        with selfassertRaises(TypeError):
+        with self.assertRaises(TypeError):
             max_integer([{4: 2, 4: 2}, {"four": "two"}])
 
 
