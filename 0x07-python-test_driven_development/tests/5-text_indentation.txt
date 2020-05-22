@@ -1,0 +1,60 @@
+the ``text_indentation`` module
+===============================
+
+using ``text_indentation``
+--------------------------
+
+First import ``text_indentation``:
+
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Test: normal text with all 3 characters:
+
+	>>> text_indentation("Hello? I am Tabitha. It's 10:00")
+	Hello?
+	<BLANKLINE>
+	I am Tabitha.
+	<BLANKLINE>
+	It's 10:
+	<BLANKLINE>
+	00
+
+Test: non-string argument:
+
+	>>> text_indentation(42)
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+
+Test: none of the characters:
+
+	>>> text_indentation("Hello")
+	Hello
+
+Test: only special chars:
+
+	>>> text_indentation("?.:")
+	?
+	<BLANKLINE>
+	.
+	<BLANKLINE>
+	:
+	<BLANKLINE>
+
+Test: None as arg:
+
+	>>> text_indentation(None)
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+
+Test: spaces but no special chars:
+
+	>>> text_indentation("Hello   ")
+	Hello
+
+Test: spaces around special chars:
+
+	>>> text_indentation("Hello   ?")
+	Hello?
+	<BLANKLINE>
