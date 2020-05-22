@@ -11,10 +11,18 @@ def text_indentation(text):
     """
     if not isinstance(text, str):
         raise TypeError('text must be a string')
-    for char in ".?:":
-        text = (char + "\n\n").join(
-            [sen.strip(" ") for sen in text.split(char)])
-    print(text, end='')
+    trail_space = False
+    for char in text.strip(' '):
+        if trail_space:
+            trail_space = False
+            continue
+        if char in '?:.':
+            print('{}\n\n'.format(char), end='')
+            trail_space = True
+        else:
+            print(char, end='')
+
+
 if __name__ == "__main__":
     import doctest
     doctest.testfile("tests/5-text_indentation.txt")
