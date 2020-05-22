@@ -1,0 +1,121 @@
+the ``lazy_matrix_mul`` module
+=========================
+
+using ``lazy_matrix_mul``
+--------------------
+
+First import ``matrix_mul``:
+
+	>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+Test: Holberton's standard matrix:
+
+	>>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+	matrix([[ 7, 10],
+            	[15, 22]])
+
+Test: another Holberton Matrix:
+
+	>>> lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+	matrix([[13, 16]])
+
+Test: matrices that don't match:
+
+	>>> lazy_matrix_mul([[1, 2, 3], [4, 5, 6]], [[1, 2], [3, 4]])
+	Traceback (most recent call last):
+	...
+	ValueError: m_a and m_b can't be multiplied
+
+Test: m_b is empty list:
+
+	>>> lazy_matrix_mul([[42]], [])
+	Traceback (most recent call last):
+	...
+	ValueError: not sure what Guillaume meant by new message
+
+Test: m_a is empty list:
+
+	>>> lazy_matrix_mul([], [[42]])
+	Traceback (most recent call last):
+	...
+	ValueError: not sure what Guillaume meant by new message
+
+Test: m_b is empty matrix:
+
+	>>> lazy_matrix_mul([[42]], [[]])
+	Traceback (most recent call last):
+	...
+	ValueError: not sure what Guillaume meant by new message
+
+Test: both matrices are empty lists:
+
+	>>> lazy_matrix_mul([], [])
+	Traceback (most recent call last):
+	...
+	ValueError: not sure what Guillaume meant by new message
+
+Test: give it a string instead of m_b:
+
+	>>> lazy_matrix_mul([[42]], "bloodmobile")
+	Traceback (most recent call last):
+	...
+	TypeError: not sure what Guillaume meant by new message
+
+Test: give it a str instead of m_a:
+
+	>>> lazy_matrix_mul("baby got back", [[42]])
+	Traceback (most recent call last):
+	...
+	TypeError: not sure what Guillaume meant by new message
+
+Test: string inside m_a:
+
+	>>> lazy_matrix_mul([["shake that healthy butt"]], [[42]])
+	Traceback (most recent call last):
+	...
+	TypeError: not sure what Guillaume meant by new message
+
+Test: string inside m_b:
+
+	>>> lazy_matrix_mul([[42]], [["give me a sister, can't resist her"]])
+	Traceback (most recent call last):
+	...
+	TypeError: not sure what Guillaume meant by new message
+
+Test: slip in a row that's too long m_b:
+
+	>>> lazy_matrix_mul([[1, 2], [3, 4], [5, 6]], [[1, 2], [3, 4, 5], [6, 7]])
+	Traceback (most recent call last):
+	...
+	TypeError: not sure what Guillaume meant by new message
+
+Test: slip in a long row m_a:
+	
+	>>> lazy_matrix_mul([[1,2], [3, 4, 5], [6, 7]], [[1, 2], [3, 4], [5, 6]])
+	Traceback (most recent call last):
+	...
+	TypeError: not sure what Guillaume meant by new message
+
+Test: only one arg:
+
+	>>> lazy_matrix_mul([[42]])
+	Traceback (most recent call last):
+	...
+	TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+Test: no args:
+
+	>>> lazy_matrix_mul()
+	Traceback (most recent call last):
+	...
+	TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+Test: feed it float'inf':
+
+	>>> lazy_matrix_mul([[42]], [[float('inf')]])
+	matrix([[inf]])
+
+Test: feed it Nan:
+
+	>>> lazy_matrix_mul([[42]], [[float('nan')]])
+	matrix([[nan]])
