@@ -41,6 +41,16 @@ Test: only special chars:
 	:
 	<BLANKLINE>
 
+Test: special chars with spaces:
+
+	>>> text_indentation("  ?  :  .  ")
+	?
+	<BLANKLINE>
+	:
+	<BLANKLINE>
+	.
+	<BLANKLINE>
+
 Test: None as arg:
 
 	>>> text_indentation(None)
@@ -58,3 +68,24 @@ Test: spaces around special chars:
 	>>> text_indentation("Hello   ?")
 	Hello?
 	<BLANKLINE>
+
+Test: no arguments:
+
+	>>> text_indentation()
+	Traceback (most recent call last):
+	...
+	TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+Test: NaN:
+
+	>>> text_indentation(float('nan'))
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+
+Test: to infinity and beyond!:
+
+	>>> text_indentation(float('inf'))
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
