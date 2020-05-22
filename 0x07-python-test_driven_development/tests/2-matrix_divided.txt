@@ -95,3 +95,8 @@ Test: for two decimal place round:
 
 	>>> matrix_divided([[2.50]], 2)
 	[[1.25]]
+
+Test: NaN division:
+
+	>>> matrix_divided([[2, 4, 6], [6, 4, 2]], float('nan'))
+	[[nan, nan, nan], [nan, nan, nan]]
