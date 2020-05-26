@@ -29,8 +29,13 @@ def matrix_mul(m_a, m_b):
 
     if not isinstance(m_a, list):
         a_list = False
+    if not a_list:
+        raise TypeError('m_a must be a list')
     if not isinstance(m_b, list):
         b_list = False
+    if not b_list:
+        raise TypeError('m_b must be a list')
+
     if len(m_a) == 0:
         a_contains = False
     if len(m_b) == 0:
@@ -58,10 +63,6 @@ def matrix_mul(m_a, m_b):
             if not isinstance(item, int) and not isinstance(item, float):
                 b_number = False
 
-    if not a_list:
-        raise TypeError('m_a must be a list')
-    if not b_list:
-        raise TypeError('m_b must be a list')
     if not aInner_list:
         raise TypeError('m_a must be a list of lists')
     if not bInner_list:
