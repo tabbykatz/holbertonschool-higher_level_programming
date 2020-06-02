@@ -1,0 +1,98 @@
+``1-my_list``module
+===================
+
+using ``1-my_list``
+-------------------
+
+first, import function from module:
+	>>> MyList = __import__('1-my_list').MyList
+
+Test: is MyList an instance of list?:
+
+	>>> test = MyList()
+	>>> isinstance(test, list)
+	True
+
+Test: is MyList of class MyList?:
+
+	>>> test = MyList()
+	>>> type(test) == MyList
+	True
+
+Test: is print_sorted an instance method?:
+
+	>>> type(MyList.__dict__['print_sorted'])
+	<class 'function'>
+
+Test: no arguments passed to print_sorted:
+
+	>>> test = MyList()
+	>>> test.__class__.print_sorted()
+	Traceback (most recent call last):
+	...
+	TypeError: print_sorted() missing 1 required positional argument: 'self'
+
+Test: Test: empty list for print_sorted:
+
+	>>> test = MyList()
+	>>> test.print_sorted()
+	[]
+
+Test: additional single argument passed to:
+
+	>>> test.print_sorted([1])
+	Traceback (most recent call last):
+	...
+	TypeError: print_sorted() takes 1 positional argument but 2 were given
+
+Test: 2 aditional args passed:
+
+	>>> test.print_sorted([1, 8, 7], 1)
+	Traceback (most recent call last):
+	...
+	TypeError: print_sorted() takes 1 positional argument but 3 were given
+
+Test: normal behavior:
+
+	>>> test = MyList([1, 8, 7])
+	>>> test.print_sorted()
+	[1, 7, 8]
+
+Test: another normal behavior test:
+
+	>>> test = MyList([9, 4, 7, 0, 3])
+	>>> test.print_sorted()
+	[0, 3, 4, 7, 9]
+
+Test: all negative numbers in list:
+
+	>>> test = MyList([-1, -8, -7])
+	>>> test.print_sorted()
+	[-8, -7, -1]
+
+Test: mix of positive and negative:
+
+	>>> test =  MyList([-1, 8, -7])
+	>>> test.print_sorted()
+	[-7, -1, 8]
+
+Test: list already sorted:
+
+	>>> test = MyList([1, 7, 8])
+	>>> test.print_sorted()
+	[1, 7, 8]
+
+Test: no changes to the list after print_sorted:
+
+	>>> test = MyList([1, 8, 7])
+	>>> test.print_sorted()
+	[1, 7, 8]
+	>>> test
+	[1, 8, 7]
+
+Test: this is a list to which I can append:
+
+	>>> test = MyList([1, 8])
+	>>> test.append(7)
+	>>> test
+	[1, 8, 7]
