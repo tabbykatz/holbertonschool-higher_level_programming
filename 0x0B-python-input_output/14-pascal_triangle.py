@@ -3,9 +3,11 @@
 
 
 def pascal_triangle(n):
-    """returns p tri for n"""
-    horiz = [[1 for j in range(i + 1)] for i in range(n)]
-    for n in range(n):
-        for i in range(n - 1):
-            horiz[n][i + 1] = sum(horiz[n - 1][i:i + 2])
-    return horiz
+    """to make this tri"""
+    tri = [[]]
+    line = [1]
+    y = [0]
+    for x in range(max(n, 0)):
+        tri.append(line)
+        line = [l + r for l, r in zip(line + y, y + line)]
+    return tri
