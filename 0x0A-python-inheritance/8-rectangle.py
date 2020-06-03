@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-``"""module for Rectangle, class what inherits from BG - no test cases"""
+"""module for Rectangle, class what inherits from BG - no test cases"""
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
