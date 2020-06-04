@@ -1,95 +1,65 @@
 #!/usr/bin/python3
-"""the lazy_matrix_mul module"""
-
+"""module for lazy_matrix_mul"""
 
 import numpy
 
 
 def lazy_matrix_mul(m_a, m_b):
-    """multiplies 2 matrices
+    """mul m_a by m_b
     Args:
         m_a: the first matrix
-        m_b: the second matrix
+        m_b: the other matrix
+    Returns:
+        matrix: product
     Raises:
-        TypeError: if either matrix != list , list of lists, if elements are
-               not int or float, or inner lists are not of the same len
-        ValueError: if lists are empty, or items cannot be multiplied
-    Returns: the product matrix
+        TypeError: if m_a or m_b are not lists or not lists of lists
+        ValueError: if m_a or m_b are empty or can't be multiplied
+        TypeError: if m_a or m_b have non int/float or are not rect
     """
+    m_a_notempty = True
+    m_b_notempty = True
+    m_a_rect = True
+    m_b_rect = True
+    m_a_num = True
+    m_b_num = True
+    m_a_notscalar = True
+    m_b_notscalar = True
 
-    a_list = True
-    b_list = True
-    aInner_list = True
-    bInner_list = True
-    a_same = True
-    b_same = True
-    a_number = True
-    b_number = True
-    a_contains = True
-    b_contains = True
-    a_inner_contains = True
-    b_inner_contains = True
-    mul = True
+    for row in m_a:
+        if not isinstance(row, list):
+            m_a_notscalar = False
+        if len(row) != len(m_a[0]):
+            m_a_rect = False
+        for num in row:
+            if not isinstance(num, (int, float)):
+                m_a_num = False
 
-    if not isinstance(m_a, list):
-        a_list = False
-    if not isinstance(m_b, list):
-        b_list = False
-    if len(m_a) == 0:
-        a_contains = False
-    if len(m_b) == 0:
-        b_contains = False
+    for row in m_b:
+        if not isinstance(row, list):
+            m_b_notscalar = False
+        if len(row) != len(m_b[0]):
+            m_b_rect = False
+        for num in row:
+            if not isinstance(num, (int, float)):
+                m_b_num = False
 
-    for inner in m_a:
-        if len(inner) == 0:
-            a_inner_contains = False
-        if not isinstance(inner, list):
-            aInner_list = False
-        if len(inner) != len(m_a[0]):
-            a_same = False
-        for item in inner:
-            if not isinstance(item, int) and not isinstance(item, float):
-                a_number = False
+    if not m_a_notscalar:
+        raise TypeError("Scalar operands are not allowed, use '*' instead")
 
-    for inner in m_b:
-        if len(inner) == 0:
-            b_inner_contains = False
-        if not isinstance(inner, list):
-            bInner_list = False
-        if len(inner) != len(m_b[0]):
-            b_same = False
-        for item in inner:
-            if not isinstance(item, int) and not isinstance(item, float):
-                b_number = False
+    if not m_b_notscalar:
+        raise TypeError("Scalar operands are not allowed, use '*' instead")
 
-    if not a_list:
-        raise TypeError('not sure what Guillaume meant by new message')
-    if not b_list:
-        raise TypeError('not sure what Guillaume meant by new message')
-    if not aInner_list:
-        raise TypeError('not sure what Guillaume meant by new message')
-    if not bInner_list:
-        raise TypeError('not sure what Guillaume meant by new message')
-    if not a_contains:
-        raise ValueError('not sure what Guillaume meant by new message')
-    if not b_contains:
-        raise ValueError('not sure what Guillaume meant by new message')
-    if not a_inner_contains:
-        raise ValueError('not sure what Guillaume meant by new message')
-    if not b_inner_contains:
-        raise ValueError('not sure what Guillaume meant by new message')
-    if not a_number:
-        raise TypeError('not sure what Guillaume meant by new message')
-    if not b_number:
-        raise TypeError('not sure what Guillaume meant by new message')
-    if not a_same:
-        raise TypeError('not sure what Guillaume meant by new message')
-    if not b_same:
-        raise TypeError('not sure what Guillaume meant by new message')
-    if len(m_a[0]) != len(m_b):
-        mul = False
-    if not mul:
-        raise ValueError('m_a and m_b can\'t be multiplied')
+    if not m_a_num:
+        raise TypeError("invalid data type for einsum")
+
+    if not m_b_num:
+        raise TypeError("invalid data type for einsum")
+
+    if not m_a_rect:
+        raise ValueError("setting an array element with a sequence.")
+
+    if not m_b_rect:
+        raise ValueError("setting an array element with a sequence.")
 
     return numpy.matrix(m_a) * numpy.matrix(m_b)
 
