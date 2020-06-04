@@ -4,7 +4,7 @@
 
 def pascal_triangle(n):
     """to make this tri"""
-    tri = [[]]
+    tri = []
     line = [1]
     y = [0]
     for x in range(max(n, 0)):
