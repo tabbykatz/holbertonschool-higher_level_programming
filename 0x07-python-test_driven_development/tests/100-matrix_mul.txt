@@ -8,6 +8,13 @@ First import ``matrix_mul``:
 
 	>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
 
+Tst: QA issue # 1:
+
+	>>> matrix_mul([[1], [2]], [123])
+	Traceback (most recent call last):
+	...
+	TypeError: m_b must be a list of lists
+
 Test: Holberton's standard matrix:
 
 	>>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])

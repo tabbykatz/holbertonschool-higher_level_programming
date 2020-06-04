@@ -42,10 +42,12 @@ def matrix_mul(m_a, m_b):
         b_contains = False
 
     for inner in m_a:
-        if len(inner) == 0:
-            a_inner_contains = False
         if not isinstance(inner, list):
             aInner_list = False
+            raise TypeError('m_a must be a list of lists')
+        if len(inner) == 0:
+            a_inner_contains = False
+            raise TypeError('m_a can\'t be empty')
         if len(inner) != len(m_a[0]):
             a_same = False
         for item in inner:
@@ -53,10 +55,12 @@ def matrix_mul(m_a, m_b):
                 a_number = False
 
     for inner in m_b:
-        if len(inner) == 0:
-            b_inner_contains = False
         if not isinstance(inner, list):
             bInner_list = False
+            raise TypeError('m_b must be a list of lists')
+        if len(inner) == 0:
+            b_inner_contains = False
+            raise ValueError('m_b can\'t be empty')
         if len(inner) != len(m_b[0]):
             b_same = False
         for item in inner:
