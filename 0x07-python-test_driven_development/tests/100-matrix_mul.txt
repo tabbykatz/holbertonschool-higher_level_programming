@@ -15,6 +15,13 @@ Test: QA issue #2:
 	...
 	TypeError: m_b must be a list of lists
 
+Test: QA issue #3:
+
+	>>> matrix_mul([1, 2, 3, 4], [[1], [2], [3]])
+	Traceback (most recent call last):
+	...
+	TypeError: m_a must be a list of lists
+
 Tst: QA issue # 1:
 
 	>>> matrix_mul([[1], [2]], [123])
