@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Rectangle class module'''
+'''Rectangle class module - tests located in tests/test_base.py'''
 from models.base import Base
 
 

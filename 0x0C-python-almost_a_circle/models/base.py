@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Base class module'''
+'''Base class module - tests located in test/test_base.py'''
 from json import dumps
 from json import loads
 import csv
@@ -103,3 +103,30 @@ class Base:
                          "x": row[2], "y": row[3]}
                 load.append(cls.create(**d))
         return load
+
+    @staticmethod
+    def draw(List_rectangles, list_squares):
+        '''maybe going to draw something?'''
+        import turtle
+        import time
+        from random import randrange
+        turtle.Screen().colormode(333)
+        for thing in list_rectangles + list_squares:
+            t = turtle.Turtle()
+            t.color((randrange(333), randrange(333), randrange(333)))
+            t.pensize(2)
+            t.penup()
+            t.pendown()
+            t.setpos((thing.x + t.pos()[0], thing.y - t.pos()[1]))
+            t.pensize(10)
+            t.forward(thing.width)
+            t.left(90)
+            t.forward(thing.height)
+            t.left(90)
+            t.forward(thing.width)
+            t.left(90)
+            t.forward(thing.height)
+            t.left(90)
+            t.end_fill()
+
+        time.sleep(5)
