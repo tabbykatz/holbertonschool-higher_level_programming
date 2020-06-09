@@ -96,10 +96,10 @@ class Base:
             for row in reader:
                 row = [int(r) for r in row]
                 if cls is Rectangle:
-                    d = {"id": row[0], "width": row[1], "height": row[2],
+                    string = {"id": row[0], "width": row[1], "height": row[2],
                          "x": row[3], "y": row[4]}
                 else:
-                    d = {"id": row[0], "size": row[1],
+                    string = {"id": row[0], "size": row[1],
                          "x": row[2], "y": row[3]}
-                load.append(cls.create(**d))
+                load.append(cls.create(**string))
         return load
