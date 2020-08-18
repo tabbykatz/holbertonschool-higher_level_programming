@@ -12,6 +12,9 @@ def find_peak(list_of_integers):
     if (len(nums) == 1):
         return (nums[0])
 
+    if nums[0] > nums[1]:
+        return nums[0]
+
     middle = len(nums) // 2
 
     if (nums[middle - 1] > nums[middle]):
