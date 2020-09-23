@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// get starwars characters from a film 
+// get starwars characters from a film
 const request = require('request');
 const url = 'https://swapi-api.hbtn.io/api/films/' + process.argv[2];
 request(url, function (error, response, body) {
@@ -11,4 +11,3 @@ request(url, function (error, response, body) {
     });
   }
 });
-
