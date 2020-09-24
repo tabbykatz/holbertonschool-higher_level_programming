@@ -1,32 +1,24 @@
 #!/usr/bin/node
-// get characters in order
+// retrieves all character names in SW film
 const request = require('request');
-function getCharName (url) {
-  return new Promise((resolve, reject) => {
-    request(url, (error, response, body) => {
-      if (error) {
-        reject(error);
-      }
-      resolve(JSON.parse(body).name);
-    });
+const url = 'http://swapi.co/api/films/' + process.argv[2];
+
+const first = function () {
+  request(url, function (error, response, body) {
+    if (error) throw error;
+    second(JSON.parse(body).characters, 0);
   });
-}
-async function charsInFilm (urlList) {
-  try {
-    let name;
-    for (const url of urlList) {
-      name = await getCharName(url);
-      console.log(name);
-    }
-  } catch (error) {
-    console.error(error);
+};
+
+const second = function (characters, i) {
+  if (characters.length === i) {
+    return;
   }
-}
-const filmsURL = 'https://swapi-api.hbtn.io/api/films/' + process.argv[2];
-request(filmsURL, function (error, response, body) {
-  if (error) {
-    console.error(error);
-  }
-  const urlList = JSON.parse(body).characters;
-  charsInFilm(urlList);
-});
+  request(characters[i], function (error, response, body) {
+    if (error) throw error;
+    console.log(JSON.parse(body).name);
+    second(characters, ++i);
+  });
+};
+
+first();
